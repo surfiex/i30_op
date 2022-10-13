@@ -354,6 +354,12 @@ class CarInterface(CarInterfaceBase):
       ret.hasLfaHda = 1157 in fingerprint[0]
       ret.radarOffCan = ret.sccBus == -1
 
+      # Smart MDPS
+      smartMdps = 0x2AA in fingerprint[0]
+      # if smartMDPS
+      if smartMdps:
+        ret.minSteerSpeed = 0
+
     ret.pcmCruise = not ret.radarOffCan
 
     return ret
